@@ -24,9 +24,6 @@ const userSchema = new Schema<IUser>({
   classe: {
     type: String,
     enum: ["ADI_1", "ADI_2"],
-    required(this: IUser) {
-      return this.role === "student";
-    }
   },
   preferences: {
     theme_prefered: String,
