@@ -9,15 +9,17 @@ export async function hashPassword(password: string) {
   return bcrypt.hash(password, 10);
 }
 
-export async function createUser({ email, passwordHash, role, name }: { email: string, passwordHash: string, role: string, name?: string }) {
-  return User.create({ email, passwordHash, role, name });
+export async function pushUser({ email, passwordHash, role }: { email: string, passwordHash: string, role: string }) {
+  return User.create({ email, passwordHash, role, });
 }
 
-export async function createProjectOwner({ email, password, name }: { email: string, password: string, name?: string }) {
+export async function handleUserCreation({ email, password, role }: { email: string, password: string, role: string }) {
   const existingUser = await findUserByEmail(email);
   if (existingUser) {
     throw new Error('EMAIL_EXISTS');
   }
+
   const passwordHash = await hashPassword(password);
-  return createUser({ email, passwordHash, role: 'project_owner', name });
+
+  return pushUser({ email, passwordHash, role });
 }
