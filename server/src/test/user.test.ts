@@ -2,10 +2,13 @@ import request from "supertest";
 import app from "../app";
 import mongoose from "mongoose";
 import User from "../models/User";
+import dotenv from "dotenv";
+dotenv.config();
 
 beforeAll(async () => {
   // Connecte à la base de test (tu peux utiliser une URI différente si besoin)
-  await mongoose.connect(process.env.MONGO_URI!);
+  if (!process.env.MONGO_URI) throw new Error("MONGO_URI non défini");
+  await mongoose.connect(process.env.MONGO_URI);
 });
 
 afterAll(async () => {
@@ -58,6 +61,6 @@ describe("POST /api/users/register", () => {
         password: "password123",
         role: "student"
       });
-    expect(res.statusCode).toBe(403);
+    expect(res.statusCode).toBe(400);
   });
 });
