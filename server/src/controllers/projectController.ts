@@ -1,15 +1,6 @@
-import { Request, Response } from "express";
-import mongoose from "mongoose";
-import { IUser } from "../types/User";
+import { Response } from "express";
+import { AuthenticatedUser, AuthRequest } from "../types/Auth";
 import { pushProject } from "../services/projectService";
-
-export interface AuthenticatedUser extends Partial<IUser> {
-  _id: mongoose.Types.ObjectId;
-}
-
-export interface AuthRequest extends Request {
-  user?: AuthenticatedUser;
-}
 
 export const createProject = async(req: AuthRequest, res: Response) => {
     try {

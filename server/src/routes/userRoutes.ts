@@ -12,7 +12,7 @@ const { validationResult } = require('express-validator');
 import { registerUser } from '../controllers/userController'
 import { registerValidator } from '../middlewares/userMiddleware';
 
-const router: express.Router = express.Router();
+const router = express.Router();
 
 router.post(
   '/register',
