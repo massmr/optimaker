@@ -14,8 +14,10 @@ jest.mock('../services/userService', () => ({
 }));
 
 describe('verifyUserExistenceOrRegister', () => {
+  /* ggshield ignore start */
   const email = 'test@test.com';
   const password = 'abcdefghi';
+  /* ggshield ignore end */
 
   afterEach(() => {
     jest.clearAllMocks();
