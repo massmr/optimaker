@@ -3,14 +3,12 @@
   dev : Massimo
 */
 
-// Packages
 import express from 'express';
 import { Request, Response, NextFunction } from 'express';
 const { validationResult } = require('express-validator');
-
-// Import work logic
-import { registerUser } from '../controllers/userController'
+import { registerUser, setUserPreferences } from '../controllers/userController'
 import { registerValidator } from '../middlewares/userMiddleware';
+import { requireAuth } from '../middlewares/authMiddleware';
 
 const router = express.Router();
 
@@ -26,5 +24,6 @@ router.post(
   },
   registerUser
 );
+router.put("/preferences", requireAuth(["student"]), setUserPreferences);
 
 export default router;

@@ -6,7 +6,8 @@
 */
 
 import { Request, Response } from 'express';
-import { handleUserCreation } from '../services/userService';
+import { AuthRequest, AuthenticatedUser } from '../types/Auth';
+import { handleUserCreation, handleUserPreferencesUpdate } from '../services/userService';
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
@@ -27,5 +28,15 @@ export const registerUser = async (req: Request, res: Response) => {
     console.error(error);
 
     return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+export const setUserPreferences = async (req: AuthRequest, res: Response) => {
+  try {
+    const user = req.user as AuthenticatedUser;
+    const updatedUser = await handleUserPreferencesUpdate(user._id.toString(), req.body);
+    res.status(200).json({ user: updatedUser });
+  } catch (error: any) {
+    res.status(error.status || 500).json({ message: error.message });
   }
 };
