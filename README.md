@@ -1,8 +1,8 @@
 # SynkronX
 
-**Optimaker** est une application open-source conçue pour résoudre un problème concret que rencontrent de nombreux enseignants : répartir équitablement les étudiants dans des projets, tout en respectant leurs préférences, leurs affinités, et certaines contraintes pédagogiques.
+**SynkronX** est une application open-source conçue pour résoudre un problème concret que rencontrent de nombreux enseignants : répartir équitablement les étudiants dans des projets, tout en respectant leurs préférences, leurs affinités, et certaines contraintes pédagogiques.
 
-Ce projet est né d’un besoin réel dans le cadre d’un semestre d’ingénierie à JUNIA ISEN. En tant qu'étudiant développeur, j’ai voulu transformer une contrainte de groupe en opportunité de création : proposer à mon encadrant une solution fonctionnelle, intuitive, et réutilisable — tout en respectant les exigences de mon module mathématique (résolution via PulP) et les réalités de terrain (interfaces accessibles pour tous les rôles).
+Ce projet est né d’un besoin réel dans le cadre d’un semestre d’ingénierie à JUNIA Adimaker. En tant qu'étudiant développeur, j’ai voulu transformer une contrainte de groupe en opportunité de création : proposer à mon encadrant une solution fonctionnelle, intuitive, et réutilisable — tout en respectant les exigences de mon module mathématique (résolution via PulP) et les réalités de terrain (interfaces accessibles pour tous les rôles).
 
 Le code est clair, documenté, et conçu pour être déployé rapidement. Tout le monde peut s’inscrire, déposer un projet, ou noter ses préférences. Une fois les paramètres validés, le solveur se charge de proposer une affectation optimale.
 
@@ -17,7 +17,7 @@ Le code est clair, documenté, et conçu pour être déployé rapidement. Tout l
 
 ---
 
-## À qui s’adresse Optimaker ?
+## À qui s’adresse ce projet ?
 
 - Aux enseignants souhaitant automatiser des répartitions tout en gardant le contrôle.
 - Aux étudiants curieux de comprendre comment leurs préférences sont valorisées.
