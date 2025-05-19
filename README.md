@@ -1,4 +1,4 @@
-# Optimaker
+# SynkronX
 
 **Optimaker** est une application open-source conçue pour résoudre un problème concret que rencontrent de nombreux enseignants : répartir équitablement les étudiants dans des projets, tout en respectant leurs préférences, leurs affinités, et certaines contraintes pédagogiques.
 
