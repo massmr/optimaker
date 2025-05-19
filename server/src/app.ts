@@ -6,8 +6,9 @@ import cors from 'cors';
 import morgan from 'morgan';
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
-import projectRoutes from './routes/projectRoutes'
-import themeRoutes from './routes/themeRoutes'
+import projectRoutes from './routes/projectRoutes';
+import themeRoutes from './routes/themeRoutes';
+import affinityRoutes from './routes/affinityRoutes';
 
 const app = express();
 
@@ -17,7 +18,8 @@ app.use(morgan('dev'));
 
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/project', projectRoutes)
-app.use('/api/theme', themeRoutes)
+app.use('/api/project', projectRoutes);
+app.use('/api/theme', themeRoutes);
+app.use('/api/affinity', affinityRoutes);
 
 export default app;
