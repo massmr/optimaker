@@ -33,3 +33,9 @@ logs/
 
 # Misc
 coverage/
+
+# Environnement virtuel
+solverenv/
+venv/
+.env/
+.venv/
