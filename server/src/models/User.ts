@@ -1,7 +1,7 @@
 // ===========================
 // User.ts
 // ===========================
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { IUser } from "../types/User";
 
 

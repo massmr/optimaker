@@ -2,6 +2,7 @@ import { Document, Types } from "mongoose";
 
 // Used by Mongoose (extends Document)
 export interface IProject extends Document {
+   _id: Types.ObjectId;
   title: string;
   description?: string;
   primary_theme: string;
@@ -10,6 +11,7 @@ export interface IProject extends Document {
   difficulty: number;
   ownerId: Types.ObjectId;
 }
+
 
 // Not used by Mongoose
 export interface ProjectInput {

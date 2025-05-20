@@ -9,6 +9,7 @@ import authRoutes from './routes/authRoutes';
 import projectRoutes from './routes/projectRoutes';
 import themeRoutes from './routes/themeRoutes';
 import affinityRoutes from './routes/affinityRoutes';
+import solverRoutes from './routes/solverRoutes';
 
 const app = express();
 
@@ -21,5 +22,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/project', projectRoutes);
 app.use('/api/theme', themeRoutes);
 app.use('/api/affinity', affinityRoutes);
+app.use('/api/solver', solverRoutes);
 
 export default app;
