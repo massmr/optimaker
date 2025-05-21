@@ -1,0 +1,73 @@
+<div class="min-h-screen flex flex-col md:flex-row">
+  <!-- Mobile image -->
+  <div class="block md:hidden w-full h-48">
+    <img
+      src="https://images.unsplash.com/photo-1538032781648-de9b802e4bc2?q=80&w=3181&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="Login image"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <!-- Form section -->
+  <div class="w-full md:w-1/2 flex flex-col justify-center items-center px-8 py-12 bg-white">
+    <div class="max-w-md w-full">
+      <h2 class="text-3xl font-semibold mb-2">Bienvenue</h2>
+      <p class="text-gray-500 mb-6">
+        De nombreux projets vous attendent! Si vous êtes étudiant, vous pouvez vous connecter avec votre identifiant Aurion.
+      </p>
+
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="space-y-4">
+        <div>
+          <label class="block text-sm mb-1">Email</label>
+          <input
+            [(ngModel)]="email"
+            name="email"
+            type="email"
+            required
+            placeholder="Example@email.com"
+            class="w-full border border-gray-300 rounded px-4 py-2 text-sm"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1">Mot de passe</label>
+          <input
+            [(ngModel)]="password"
+            name="password"
+            type="password"
+            required
+            placeholder="At least 8 characters"
+            class="w-full border border-gray-300 rounded px-4 py-2 text-sm"
+          />
+          <div class="text-right mt-1">
+            <a href="#" class="text-xs text-green-700 hover:underline">Mot de passe oublié ?</a>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="!loginForm.form.valid"
+          class="w-full bg-green-900 text-white rounded px-4 py-2 font-medium hover:bg-green-800"
+        >
+          Sign in
+        </button>
+      </form>
+
+      <p class="text-sm text-center mt-6">
+        Pas encore des nôtres ?<br>
+        <a href="#" class="text-green-900 font-medium hover:underline">S'enregister</a>
+      </p>
+
+      <p class="text-xs text-center text-gray-400 mt-6">© {{ currentYear }} Open source project</p>
+    </div>
+  </div>
+
+  <!-- Desktop image -->
+  <div class="hidden md:block w-1/2">
+    <img
+      src="https://images.unsplash.com/photo-1538032781648-de9b802e4bc2?q=80&w=3181&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="Login image"
+      class="w-full h-full object-cover"
+    />
+  </div>
+</div>
