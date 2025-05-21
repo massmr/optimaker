@@ -5,14 +5,15 @@ import { AuthService } from '../auth.service';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './login.component.html',
+  templateUrl: './register.component.html',
 })
-export class LoginComponent {
+export class RegisterComponent {
   email = '';
   password = '';
+  role = 'project_owner';
   errorMessage = '';
   currentYear = new Date().getFullYear();
   
@@ -20,17 +21,16 @@ export class LoginComponent {
 
   onSubmit() {
     this.errorMessage = '';
-    this.authService.login(this.email, this.password).subscribe({
+    this.authService.register(this.email, this.password, this.role).subscribe({
       next: (res) => {
-        console.log('Logged in successfully');
-        localStorage.setItem('token', res.token);
-        //this.router.navigate(['/dashboard']);
+        console.log('Registered successfully');
+        this.router.navigate(['/auth/login']);
       },
       error: (err) => {
-        this.errorMessage = 'Email ou mot de passe incorrect.';
+        this.errorMessage = `Erreur lors de l'inscription`;
         console.error('Error while logging in', err);
       },
-      complete: () => console.log('Login flow terminated')
+      complete: () => console.log('Register flow terminated')
     });
   }
 }
