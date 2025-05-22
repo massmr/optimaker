@@ -1,0 +1,66 @@
+<div class="min-h-screen grid grid-cols-1 md:grid-cols-2 bg-gray-100">
+
+  <!-- Colonne gauche -->
+  <div class="flex flex-col justify-center items-center px-6 py-12">
+    <div class="w-full max-w-md space-y-6">
+
+      <!-- Titre -->
+      <div class="text-center">
+        <h1 class="text-4xl flex items-start font-bold text-gray-800 mb-2">S'enregistrer</h1>
+        <p class="flex items-start text-gray-600">Dis-nous qui tu es pour continuer.</p>
+      </div>
+
+      <!-- Étudiant -->
+      <div
+        (click)="selectStudent()"
+        class="cursor-pointer bg-white shadow rounded-lg overflow-hidden border transition hover:shadow-lg"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1627556704353-016baeb12c79?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Étudiant"
+          class="w-full h-40 object-cover object-bottom"
+        />
+        <div class="p-5 text-center">
+          <h2 class="text-xl font-semibold mb-2">Je suis étudiant</h2>
+          <p class="text-gray-600 mb-4 text-sm">
+            J'accède à mes projets grâce à mes identifiants Aurion.
+          </p>
+          <button class="py-2 px-4 rounded border border-transparent bg-green-900 text-white transition hover:bg-white hover:text-green-900 hover:border-green-900">
+            Continuer
+          </button>
+        </div>
+      </div>
+
+      <!-- Apporteur -->
+      <div
+        (click)="selectProjectOwner()"
+        class="cursor-pointer bg-white shadow rounded-lg overflow-hidden border transition hover:shadow-lg"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1713947504039-6ae85038dfd0?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Apporteur"
+          class="w-full h-40 object-cover object-center"
+        />
+        <div class="p-5 text-center">
+          <h2 class="text-xl font-semibold mb-2">Je suis un apporteur de projet</h2>
+          <p class="text-gray-600 mb-4 text-sm">
+            Je souhaite proposer un projet et m'inscrire.
+          </p>
+          <button class="py-2 px-4 rounded border border-transparent bg-green-900 text-white transition hover:bg-white hover:text-green-900 hover:border-green-900">
+            Continuer
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Colonne droite : image -->
+  <div class="hidden md:block">
+    <img
+      src="https://images.unsplash.com/photo-1620325867502-221cfb5faa5f?q=80&w=2957&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="Green building"
+      class="w-full h-full object-cover"
+    />
+  </div>
+</div>
