@@ -1,3 +1,5 @@
+# Please read ./modelisation_V1.md
+
 from pulp import LpProblem, LpMaximize, LpVariable, lpSum, LpBinary
 import json
 import sys
@@ -36,7 +38,6 @@ B_minus = [("e1", "e2")]
 # Test dataset end
 
 # JSON Mapping
-# aa
 raw = json.load(sys.stdin)
 
 E = [s['id'] for s in raw['students']]
@@ -60,9 +61,9 @@ classe = {e: "ADI1" for e in E}
 B_minus = []
 
 # Subset functions
-# Please read docs/modelisation_V1.md
-# m(i,j) => matching_score(i,j)
-# prog(i,j) => progression(i,j)
+
+# In doc : m(i,j) => matching_score(i,j)
+# In doc : prog(i,j) => progression(i,j)
 def matching_score(i, j):
     score = 0
     if t_pref[i] == t_prim[j]:
@@ -90,6 +91,9 @@ def epsilon(i):
 def progression(i, j):
     return 1 if n_perf(i) - difficulty[j] + epsilon(i) >= 0 else 0
 
+def M(i, j):
+    return 1 if affinity.get((i, j), 0) > 0 else 0
+
 # =====================================================
 # ================== Z & Constraints ==================
 # =====================================================
@@ -97,18 +101,21 @@ def progression(i, j):
 prob = LpProblem("Affectation_E_P", LpMaximize)
 
 # Decision var
-x = {(i, j): LpVariable(name=f"x_{i}_{j}", cat=LpBinary)
-     for i in E for j in P if affinity.get((i, j), 0) > 0}
+x = {(i, j): LpVariable(name=f"x_{i}_{j}", cat=LpBinary) for i in E for j in P}
 
 # Dynamic weights
 alpha1, alpha2, alpha3 = 0.5, 1.0, 0.2
 
+# Penalty
+C = 100
+
 # Z Fn
 prob += lpSum(
     x[i, j] * (
-        alpha1 * affinity[i, j] +
+        alpha1 * affinity.get((i, j), 0) +
         alpha2 * matching_score(i, j) +
-        alpha3 * progression(i, j)
+        alpha3 * progression(i, j) -
+        C * (1 - M(i, j))
     ) for (i, j) in x
 )
 
@@ -133,12 +140,6 @@ for j in P:
     adi2 = lpSum(x[i, j] for i in E if classe[i] == "ADI2" and (i, j) in x)
     prob += (adi1 - adi2 <= delta)
     prob += (adi2 - adi1 <= delta)
-
-# Constraint 5 : if affinity 0 - not set i in j
-for i in E:
-    for j in P:
-        if (i, j) not in x:
-            prob += LpVariable(name=f"dummy_{i}_{j}", cat=LpBinary) == 0
 
 # Resolve
 prob.solve()
